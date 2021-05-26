@@ -15,7 +15,13 @@
 
 <%end%>
 <h2>Comments</h2>
-<%= render @article.comments %>
+
+<%= turbo_stream_from "comments" %>
+<%= turbo_frame_tag "comments" do %>
+    <%= render @article.comments %>
+<% end %>
 
  <h2>Add a comment:</h2>
-<%= render 'comments/form' %>
+<%= turbo_frame_tag "comment_form" do %>
+    <%= render 'comments/form' %>
+<% end %>
